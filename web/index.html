@@ -99,79 +99,79 @@
             </div>
         </div>
 
-<!-- Sección Horas de Trabajo, Festivos, Vacaciones y Formulario de Datos -->
-<div class="form-section">
-    <div class="container-horas">
-        <h5>Registro de Horas de Trabajo</h5>
-        <form action="/submit-horas-trabajo" method="post" class="form-grid">
-            <label for="lunes">Lunes:</label>
-            <input type="text" id="lunes" name="lunes" placeholder="max.8hrs" required>
+        <!-- Sección Horas de Trabajo, Festivos, Vacaciones y Formulario de Datos -->
+        <div class="form-section">
+            <div class="container-horas">
+                <h5>Registro de Horas de Trabajo</h5>
+                <form action="/submit-horas-trabajo" method="post" class="form-grid">
+                    <label for="lunes">Lunes:</label>
+                    <input type="text" id="lunes" name="lunes" placeholder="max.8hrs" required>
 
-            <label for="martes">Martes:</label>
-            <input type="text" id="martes" name="martes" placeholder="max.8hrs" required>
+                    <label for="martes">Martes:</label>
+                    <input type="text" id="martes" name="martes" placeholder="max.8hrs" required>
 
-            <label for="miercoles">Miércoles:</label>
-            <input type="text" id="miercoles" name="miercoles" placeholder="max.8hrs" required>
+                    <label for="miercoles">Miércoles:</label>
+                    <input type="text" id="miercoles" name="miercoles" placeholder="max.8hrs" required>
 
-            <label for="jueves">Jueves:</label>
-            <input type="text" id="jueves" name="jueves" placeholder="max.8hrs" required>
+                    <label for="jueves">Jueves:</label>
+                    <input type="text" id="jueves" name="jueves" placeholder="max.8hrs" required>
 
-            <label for="viernes">Viernes:</label>
-            <input type="text" id="viernes" name="viernes" placeholder="max.8hrs" required>
+                    <label for="viernes">Viernes:</label>
+                    <input type="text" id="viernes" name="viernes" placeholder="max.8hrs" required>
 
-            <label for="sabado">Sábado:</label>
-            <input type="text" id="sabado" name="sabado" placeholder="max.8hrs" required>
-        </form>
-        <div class="information">
+                    <label for="sabado">Sábado:</label>
+                    <input type="text" id="sabado" name="sabado" placeholder="max.8hrs" required>
+                </form>
+                <div class="information">
 
+                    <div class="container">
+                        <h5>Agregar Información Académica</h5>
+                        <form action="/submit-info-academica" method="post" class="form-grid">
+                            <label for="nombre">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+                            <label for="materia">Materia:</label>
+                            <input type="text" id="materia" name="materia" placeholder="Materia que impartes" required>
+
+                            <label for="cantidad-alumnos">Cantidad de Alumnos:</label>
+                            <input type="number" id="cantidadalumnos" name="cantidad-alumnos" placeholder="Ej. 30"
+                                required>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="registro">
+            <!-- Nueva sección de Días Festivos -->
             <div class="container">
-                <h5>Agregar Información Académica</h5>
-                <form action="/submit-info-academica" method="post" class="form-grid">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-
-                    <label for="materia">Materia:</label>
-                    <input type="text" id="materia" name="materia" placeholder="Materia que impartes" required>
-
-                    <label for="cantidad-alumnos">Cantidad de Alumnos:</label>
-                    <input type="number" id="cantidadalumnos" name="cantidad-alumnos" placeholder="Ej. 30"
-                        required>
+                <h5>Registrar Días Festivos</h5>
+                <form action="/submit-dias-festivos" method="post" class="form-grid">
+                    <label for="dia-festivo-1">Días Festivos:</label>
+                    <input type="date" id="dia-festivo-1" name="dia-festivo-1" required>
+                    <input type="date" id="dia-festivo-2" name="dia-festivo-1" required><!-- comment -->
+                    <input type="date" id="dia-festivo-3" name="dia-festivo-1" required><!-- comment -->
+                    <input type="date" id="dia-festivo-4" name="dia-festivo-1" required>
+                    <input type="date" id="dia-festivo-5" name="dia-festivo-1" required>
                 </form>
             </div>
-        </div>
-    </div>
-</div>
 
-            <div class="registro">
-                <!-- Nueva sección de Días Festivos -->
-                <div class="container">
-    <h5>Registrar Días Festivos</h5>
-    <form action="/submit-dias-festivos" method="post" class="form-grid">
-        <label for="dia-festivo-1">Días Festivos:</label>
-        <input type="date" id="dia-festivo-1" name="dia-festivo-1" required>
-        <input type="date" id="dia-festivo-2" name="dia-festivo-1" required><!-- comment -->
-        <input type="date" id="dia-festivo-3" name="dia-festivo-1" required><!-- comment -->
-        <input type="date" id="dia-festivo-4" name="dia-festivo-1" required>
-        <input type="date" id="dia-festivo-5" name="dia-festivo-1" required>
-    </form>
-</div>
+            <!-- Nueva sección de Vacaciones -->
+            <div class="container">
+                <h5>Registro de Fechas Vacacionales</h5>
+                <form action="/submit-fecha-vacacional" method="post" class="form-grid">
+                    <label for="inicio-vacaciones-1">Fecha de Inicio de Vacaciones:</label>
+                    <input type="date" id="inicio-vacaciones-1" name="inicio-vacaciones-1" required>
 
-<!-- Nueva sección de Vacaciones -->
-<div class="container">
-    <h5>Registro de Fechas Vacacionales</h5>
-    <form action="/submit-fecha-vacacional" method="post" class="form-grid">
-        <label for="inicio-vacaciones-1">Fecha de Inicio de Vacaciones:</label>
-        <input type="date" id="inicio-vacaciones-1" name="inicio-vacaciones-1" required>
-
-        <label for="fin-vacaciones-1">Fecha de Fin de Vacaciones:</label>
-        <input type="date" id="fin-vacaciones-1" name="fin-vacaciones-1" required>
-    </form>
-</div>
-
+                    <label for="fin-vacaciones-1">Fecha de Fin de Vacaciones:</label>
+                    <input type="date" id="fin-vacaciones-1" name="fin-vacaciones-1" required>
+                </form>
             </div>
 
-
         </div>
+
+
+    </div>
     </div>
 
     <!-- Botón Guardar -->
@@ -206,14 +206,16 @@
             </tr>
         </tbody>
     </table>
-
+    <button  class="download-button" onclick="exportarTablaPDF()">Descargar PDF</button>
     <!-- Scripts -->
     <script src="js/Calendario.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-BYFRpm0ONCF52tzE0qMWz0W8n26M2hD9IWNCBVnFZKDdEwoxO5p6pkb1H7fRIvdE" crossorigin="anonymous">
         </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.15/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </body>
 
 </html>

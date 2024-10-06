@@ -9,8 +9,8 @@ body {
 /* Principal Layout */
 .principal {
   display: flex;
-  flex-direction: column; 
-  justify-content: space-between; 
+  flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
   background-color: aliceblue;
@@ -19,31 +19,31 @@ body {
 /* Form Section */
 .form-section {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   gap: 20px;
   margin-left: 15px;
 }
 
 /* Periodos Container */
 .container-periodos {
-  width: 100%; 
+  width: 100%;
   display: flex;
-  flex-direction: column; 
-  gap: 20px; 
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Parciales Container */
 .parciales-container {
   display: flex;
-  flex-direction: column; 
-  gap: 20px; 
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* Parciales */
 .parciales {
-  width: 100%; 
+  width: 100%;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
 }
 
 .parciales-btn {
@@ -76,8 +76,7 @@ form {
 }
 
 input[type="text"],
-input[type="submit"]
-input[type="number"] {
+input[type="submit"] input[type="number"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -148,20 +147,21 @@ input[type="submit"]:hover {
 }
 
 .calendar-day.selected {
-  background-color: blue;   color: white;
+  background-color: blue;
+  color: white;
 }
 
 .calendar-day.range {
-  background-color: lightblue; 
+  background-color: lightblue;
 }
 
 .calendar-day.parcial-selected {
-  background-color: green; 
+  background-color: green;
   color: white;
 }
 
 .calendar-day.parcial-range {
-  background-color: lightgreen; 
+  background-color: lightgreen;
 }
 
 /* Table Styles */
@@ -199,10 +199,34 @@ tr:hover {
 /* Responsive Styles */
 @media (min-width: 768px) {
   .principal {
-      flex-direction: row; 
+    flex-direction: row;
   }
 
   .form-section {
-      flex-direction: row; 
+    flex-direction: row;
   }
 }
+
+.download-button {
+  background-color: #4CAF50; /* Color de fondo verde */
+  border: none; /* Sin borde */
+  color: white; /* Color del texto */
+  padding: 10px 20px; /* Espaciado interno */
+  text-align: center; /* Centrar texto */
+  text-decoration: none; /* Sin subrayado */
+  display: inline-block; /* Permitir el ajuste de ancho */
+  font-size: 16px; /* Tamaño de fuente */
+  margin: 4px 2px; /* Margen alrededor */
+  cursor: pointer; /* Cambia el cursor al pasar el ratón */
+  border-radius: 5px; /* Bordes redondeados */
+  transition: background-color 0.3s, transform 0.2s; /* Transiciones suaves */
+}
+
+.download-button:hover {
+  background-color: #45a049; /* Color de fondo al pasar el ratón */
+  transform: scale(1.05); /* Escala ligeramente el botón */
+}
+
+.download-button:active {
+  transform: scale(0.95); 
+}/* Efecto de pulsar */

@@ -318,7 +318,8 @@ function validarHoras(input) {
     }
 }
 
-document.querySelectorAll('input[type="text"]').forEach(input => {
+// Seleccionar solo los inputs de horas para aplicar la validación
+document.querySelectorAll('#lunes, #martes, #miercoles, #jueves, #viernes, #sabado').forEach(input => {
     input.addEventListener('input', function() {
         validarHoras(this); 
     });
@@ -326,7 +327,7 @@ document.querySelectorAll('input[type="text"]').forEach(input => {
 
 // Validar cantidad de alumnos
 function cantidadAlumnos(input) {
-    input.value = input.value.replace(/[^\d]/g, ''); 
+    input.value = input.value.replace(/[^\d]/g, ''); // Solo permite dígitos
     let valor = parseInt(input.value);
     if (!isNaN(valor) && valor > 30) { 
         input.value = '';
@@ -337,6 +338,7 @@ function cantidadAlumnos(input) {
 document.querySelector('#cantidadalumnos').addEventListener('input', function() {
     cantidadAlumnos(this); // Valida cantidad de alumnos
 });
+
 
 
 // Inicializar el calendario del periodo
@@ -361,7 +363,7 @@ function obtenerDatos() {
     let diaFestivo5 = document.getElementById("dia-festivo-5").value;
     let inicioVacaciones = document.getElementById("inicio-vacaciones-1").value;
     let finVacaciones = document.getElementById("fin-vacaciones-1").value;
-    let cont;
+    let cont = parseInt(0);
     
     let vacaciones = inicioVacaciones + " - " + finVacaciones;
 
@@ -397,23 +399,23 @@ function obtenerDatos() {
     parcial1Fin = parseDate(parcial1Fin);
     parcial2Fin = parseDate(parcial2Fin);
     parcial3Fin = parseDate(parcial3Fin);
-    if(diaFestivo1 ===! 0){
+    if(diaFestivo1 ===! null){
         diaFestivo1 = parseDate(diaFestivo1);
         cont++;
     }
-    if(diaFestivo2 ===! 0){
+    if(diaFestivo2 ===! null){
         diaFestivo2 = parseDate(diaFestivo2);
         cont++;
     }
-    if(diaFestivo3 ===! 0){
+    if(diaFestivo3 ===! null){
         diaFestivo3 = parseDate(diaFestivo3);
         cont++;
     }
-    if(diaFestivo4 ===! 0){
+    if(diaFestivo4 ===! null){
         diaFestivo4 = parseDate(diaFestivo4);
         cont++;
     }
-    if(diaFestivo5 ===! 0){
+    if(diaFestivo5 ===! null){
         diaFestivo5 = parseDate(diaFestivo5);
         cont++;
     }
@@ -435,58 +437,7 @@ function obtenerDatos() {
     document.getElementById("idFestivos").innerHTML=cont;
     document.getElementById("idVacaciones").innerHTML=vacaciones;
     
-//    let tablaHTML = `
-//                <table class="table table-striped table-bordered">
-//                    <thead class="table-dark">
-//                        <tr>
-//                            <th>ID</th>
-//                            <th>Nombre</th>
-//                            <th>Edad</th>
-//                            <th>Ciudad</th>
-//                        </tr>
-//                    </thead>
-//                    <tbody>
-//            `;
 
-//    //Mientras la fecha sea menor o igual a la fecha final se hace el proceso
-//    while (periodoInicio <= periodoFin) {
-//        // Mientras la fecha este fuera del periodo vacacional
-//        if (periodoInicio < periodoVacacionesInicio|| periodoInicio > periodoVacacionesFin) {
-//            // y mientras la fecha no sea igual a los dias feriados
-//            if (periodoInicio !== diaFeriado1 && periodoInicio !== diaFeriado2 && periodoInicio !== diaFeriado3 && periodoInicio !== diaFeriado4 && periodoInicio !== diaFeriado5) {
-//                //Vas a obtener el dia de la semana con letra
-//                diaSemana = obtenerDiaDeLaSemana(fechaInicio);
-//
-//                //Si el dia de la semana es lunes
-//                if (diaSemana.equals("Lunes")) {
-//                    //Y mientas el contador sea menor o igual al numero de horas de ese dia
-//                    while (cont <= horasLunes) {
-//                        //vas a hacer este proceso
-//
-//                        //Sumas 1 al contador
-//                        cont++;
-//                    }
-//                }
-//                if (diaSemana.equals("Martes")) {
-//
-//                }
-//                if (diaSemana.equals("Miércoles")) {
-//
-//                }
-//                if (diaSemana.equals("Jueves")) {
-//
-//                }
-//                if (diaSemana.equals("Viernes")) {
-//
-//                }
-//                if (diaSemana.equals("Sábado")) {
-//
-//                }
-//            }
-//        }
-//
-//        fechaInicio.setDate(fechaInicio.getDate() + 1);
-//    }
 }
 
 
@@ -504,3 +455,84 @@ function obtenerDiaDeLaSemana(fecha) {
     return dias[fecha.getDay()];
     const diaSemana = obtenerDiaDeLaSemana(fecha);
 }
+async function exportarTablaPDF() {
+    try {
+        const {jsPDF} = window.jspdf;
+
+        // Obtener datos del formulario
+        const profesor = document.getElementById('nombre').value;
+        const materia = document.getElementById('materia').value;
+        const cantidadAlumnos = parseInt(document.getElementById('cantidadalumnos').value);
+        const periodo = document.getElementById('dateRangeInput').value;
+
+        // Obtener datos de la tabla
+        const table = document.getElementById('selectedDatesTable');
+        const dias = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+        const selectedDias = []; 
+
+        dias.forEach((dia) => {
+            const cell = table.querySelector(`#id${dia}`);
+            if (cell) {
+                // Solo añadir el día si hay datos (diferente de '-' o vacío)
+                if (cell.textContent.trim() !== '-' && cell.textContent.trim() !== '0') {
+                    selectedDias.push(dia);
+                }
+            } else {
+                console.error(`No se encontró la celda con ID: id${dia}`);
+            }
+        });
+
+        // Crear el PDF
+        const pdf = new jsPDF('portrait', 'pt', 'a4');
+
+        // Agregar título y datos del profesor, materia y periodo
+        let currentY = 40; // Posición inicial Y
+        const addHeader = (doc, text) => {
+            doc.setFontSize(12);
+            doc.text(text, 40, currentY);
+            currentY += 10; // Incrementar Y para la siguiente línea
+        };
+
+        addHeader(pdf, `Profesor: ${profesor}`);
+        addHeader(pdf, `Materia: ${materia}`);
+        addHeader(pdf, `Periodo: ${periodo}`);
+
+        // Generar las columnas y filas para la tabla PDF
+        const tableHead = ['Alumno', ...selectedDias];
+        const tableBody = [];
+
+        for (let i = 1; i <= cantidadAlumnos; i++) {
+            const row = [`Alumno ${i}`]; // Nombre de cada alumno
+            selectedDias.forEach(dia => {
+                row.push(''); // Celda vacía para las clases
+            });
+            tableBody.push(row);
+        }
+
+        pdf.autoTable({
+            head: [tableHead],
+            body: tableBody,
+            startY: currentY + 10, // Usar la posición actual para la tabla
+            styles: {
+                fontSize: 10,
+                cellPadding: 5,
+                valign: 'middle',
+                halign: 'center',
+                lineColor: [44, 62, 80],
+                lineWidth: 0.1,
+            },
+            headStyles: {
+                fillColor: [44, 62, 80],
+                textColor: [255, 255, 255],
+                fontStyle: 'bold',
+            },
+        });
+
+        // Descargar el PDF
+        const pdfBlob = pdf.output('blob');
+        saveAs(pdfBlob, 'alumnos_clases.pdf');
+    } catch (error) {
+        console.error('Error al generar el PDF:', error);
+    }
+}
+
