@@ -99,47 +99,49 @@
             </div>
         </div>
 
-        <!-- Sección Horas de Trabajo, Festivos, Vacaciones y Formulario de Datos -->
-        <div class="form-section">
-            <div class="container-horas">
-                <h5>Registro de Horas de Trabajo</h5>
-                <form action="/submit-horas-trabajo" method="post" class="form-grid">
-                    <label for="lunes">Lunes:</label>
-                    <input type="text" id="lunes" name="lunes" placeholder="max.8hrs" required>
+<!-- Sección Horas de Trabajo, Festivos, Vacaciones y Formulario de Datos -->
+<div class="form-section">
+    <div class="container-horas">
+        <h5>Registro de Horas de Trabajo</h5>
+        <form action="/submit-horas-trabajo" method="post" class="form-grid">
+            <label for="lunes">Lunes:</label>
+            <input type="text" id="lunes" name="lunes" placeholder="max.8hrs" required>
 
-                    <label for="martes">Martes:</label>
-                    <input type="text" id="martes" name="martes" placeholder="max.8hrs" required>
+            <label for="martes">Martes:</label>
+            <input type="text" id="martes" name="martes" placeholder="max.8hrs" required>
 
-                    <label for="miercoles">Miércoles:</label>
-                    <input type="text" id="miercoles" name="miercoles" placeholder="max.8hrs" required>
+            <label for="miercoles">Miércoles:</label>
+            <input type="text" id="miercoles" name="miercoles" placeholder="max.8hrs" required>
 
-                    <label for="jueves">Jueves:</label>
-                    <input type="text" id="jueves" name="jueves" placeholder="max.8hrs" required>
+            <label for="jueves">Jueves:</label>
+            <input type="text" id="jueves" name="jueves" placeholder="max.8hrs" required>
 
-                    <label for="viernes">Viernes:</label>
-                    <input type="text" id="viernes" name="viernes" placeholder="max.8hrs" required>
+            <label for="viernes">Viernes:</label>
+            <input type="text" id="viernes" name="viernes" placeholder="max.8hrs" required>
 
-                    <label for="sabado">Sábado:</label>
-                    <input type="text" id="sabado" name="sabado" placeholder="max.8hrs" required>
+            <label for="sabado">Sábado:</label>
+            <input type="text" id="sabado" name="sabado" placeholder="max.8hrs" required>
+        </form>
+        <div class="information">
+
+            <div class="container">
+                <h5>Agregar Información Académica</h5>
+                <form action="/submit-info-academica" method="post" class="form-grid">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+
+                    <label for="materia">Materia:</label>
+                    <input type="text" id="materia" name="materia" placeholder="Materia que impartes" required>
+
+                    <label for="cantidad-alumnos">Cantidad de Alumnos:</label>
+                    <input type="number" id="cantidadalumnos" name="cantidad-alumnos" placeholder="Ej. 30"
+                        required>
                 </form>
-                <div class="information">
-
-                    <div class="container">
-                        <h5>Agregar Información Académica</h5>
-                        <form action="/submit-info-academica" method="post" class="form-grid">
-                            <label for="nombre">Nombre:</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
-
-                            <label for="materia">Materia:</label>
-                            <input type="text" id="materia" name="materia" placeholder="Materia que impartes" required>
-
-                            <label for="cantidad-alumnos">Cantidad de Alumnos:</label>
-                            <input type="text" id="cantidadalumnos" name="cantidad-alumnos" placeholder="Ej. 30"
-                                required>
-                        </form>
-                    </div>
-                </div>
             </div>
+        </div>
+    </div>
+</div>
+
             <div class="registro">
                 <!-- Nueva sección de Días Festivos -->
                 <div class="container">
