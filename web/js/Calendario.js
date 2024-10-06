@@ -308,6 +308,36 @@ function getParcialDayClassName(date, calendar) {
     }
     return '';
 }
+// Validar horas de trabajo por día
+function validarHoras(input) {
+    input.value = input.value.replace(/[^\d]/g, ''); // Solo permite dígitos
+    let valor = parseInt(input.value);
+    if (!isNaN(valor) && valor > 8) { // Solo muestra alerta si es mayor a 8
+        input.value = ''; // Limpia el input
+        Swal.fire('Las horas no deben ser mayores a 8');
+    }
+}
+
+document.querySelectorAll('input[type="text"]').forEach(input => {
+    input.addEventListener('input', function() {
+        validarHoras(this); 
+    });
+});
+
+// Validar cantidad de alumnos
+function cantidadAlumnos(input) {
+    input.value = input.value.replace(/[^\d]/g, ''); 
+    let valor = parseInt(input.value);
+    if (!isNaN(valor) && valor > 30) { 
+        input.value = '';
+        Swal.fire('La cantidad de alumnos no debe ser mayor a 30');
+    }
+}
+
+document.querySelector('#cantidadalumnos').addEventListener('input', function() {
+    cantidadAlumnos(this); // Valida cantidad de alumnos
+});
+
 
 // Inicializar el calendario del periodo
 renderCalendar();
