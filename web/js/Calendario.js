@@ -308,7 +308,36 @@ function getParcialDayClassName(date, calendar) {
     }
     return '';
 }
+// validar horas de trabajo por dia
+function validarHoras(input) {
+    input.value = input.value.replace(/[^\d]/g, '');
+    let valor = parseInt(input.value);
+    if (isNaN(valor) || valor > 8) {
+        input.value = '';
+        Swal.fire('Las horas no deben ser mayores a 8');
+    }
+}
 
+document.querySelectorAll('input[type="text"]').forEach(input => {
+    input.addEventListener('input', function() {
+        validarHoras(this);
+    });
+});
+
+function cantidadAlumnos(input) {
+    input.value = input.value.replace(/[^\d]/g, '');
+    let valor = parseInt(input.value);
+    if (isNaN(valor) || valor > 30) {
+        input.value = '';
+        Swal.fire('La cantidad de alumnos no debe ser mayor a 30');
+    }
+}
+
+document.querySelectorAll('input[type="number"]').forEach(input => {
+    input.addEventListener('input', function() {
+        cantidadAlumnos(this);
+    });
+});
 // Inicializar el calendario del periodo
 renderCalendar();
 updateSelectedDates();
