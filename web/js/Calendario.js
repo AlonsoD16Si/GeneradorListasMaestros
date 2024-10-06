@@ -342,3 +342,165 @@ document.querySelector('#cantidadalumnos').addEventListener('input', function() 
 // Inicializar el calendario del periodo
 renderCalendar();
 updateSelectedDates();
+
+
+function obtenerDatos() {
+    let horasLunes = document.getElementById("lunes").value;
+    let horasMartes = document.getElementById("martes").value;
+    let horasMiercoles = document.getElementById("miercoles").value;
+    let horasJueves = document.getElementById("jueves").value;
+    let horasViernes = document.getElementById("viernes").value;
+    let horasSabado = document.getElementById("sabado").value;
+//    let profesor = document.getElementById("nombre").value;
+//    let materia = document.getElementById("materia").value;
+//    let alumnos = parseInt(document.getElementById("cantidadalumnos").values);
+    let diaFestivo1 = document.getElementById("dia-festivo-1").value;
+    let diaFestivo2 = document.getElementById("dia-festivo-2").value;
+    let diaFestivo3 = document.getElementById("dia-festivo-3").value;
+    let diaFestivo4 = document.getElementById("dia-festivo-4").value;
+    let diaFestivo5 = document.getElementById("dia-festivo-5").value;
+    let inicioVacaciones = document.getElementById("inicio-vacaciones-1").value;
+    let finVacaciones = document.getElementById("fin-vacaciones-1").value;
+    let cont;
+    
+    let vacaciones = inicioVacaciones + " - " + finVacaciones;
+
+    let periodoFechas = document.getElementById('dateRangeInput').value;
+    periodoFechas = periodoFechas.split(' - ');
+
+// Extrae la fecha de inicio y la fecha de fin
+    let periodoInicio = periodoFechas[0];  // Primera fecha
+    let periodoFin = periodoFechas[1];     // Segunda fecha
+
+    let parcial1 = document.getElementById('dateRangeInputParcial1').value;
+    parcial1 = parcial1.split(' - ');
+    let parcial1Inicio = parcial1[0];
+    let parcial1Fin = parcial1[1];
+
+    let parcial2 = document.getElementById('dateRangeInputParcial2').value;
+    parcial2 = parcial2.split(' - ');
+    let parcial2Inicio = parcial2[0];
+    let parcial2Fin = parcial2[1];
+
+    let parcial3 = document.getElementById('dateRangeInputParcial3').value;
+    parcial3 = parcial3.split(' - ');
+    let parcial3Inicio = parcial3[0];
+    let parcial3Fin = parcial3[1];
+
+
+    //Parcear las fechas a formato fecha
+    periodoInicio = parseDate(periodoInicio);
+    periodoFin = parseDate(periodoFin);
+    parcial1Inicio = parseDate(parcial1Inicio);
+    parcial2Inicio = parseDate(parcial2Inicio);
+    parcial3Inicio = parseDate(parcial3Inicio);
+    parcial1Fin = parseDate(parcial1Fin);
+    parcial2Fin = parseDate(parcial2Fin);
+    parcial3Fin = parseDate(parcial3Fin);
+    if(diaFestivo1 ===! 0){
+        diaFestivo1 = parseDate(diaFestivo1);
+        cont++;
+    }
+    if(diaFestivo2 ===! 0){
+        diaFestivo2 = parseDate(diaFestivo2);
+        cont++;
+    }
+    if(diaFestivo3 ===! 0){
+        diaFestivo3 = parseDate(diaFestivo3);
+        cont++;
+    }
+    if(diaFestivo4 ===! 0){
+        diaFestivo4 = parseDate(diaFestivo4);
+        cont++;
+    }
+    if(diaFestivo5 ===! 0){
+        diaFestivo5 = parseDate(diaFestivo5);
+        cont++;
+    }
+    
+    inicioVacaciones=parseDate(inicioVacaciones);
+    finVacaciones = parseDate(finVacaciones);
+    
+    
+    
+    
+
+    document.getElementById("idPeriodo").innerHTML=periodoFechas;
+    document.getElementById("idLunes").innerHTML=horasLunes;
+    document.getElementById("idMartes").innerHTML=horasMartes;
+    document.getElementById("idMiercoles").innerHTML=horasMiercoles;
+    document.getElementById("idJueves").innerHTML=horasJueves;
+    document.getElementById("idViernes").innerHTML=horasViernes;
+    document.getElementById("idSabado").innerHTML=horasSabado;
+    document.getElementById("idFestivos").innerHTML=cont;
+    document.getElementById("idVacaciones").innerHTML=vacaciones;
+    
+//    let tablaHTML = `
+//                <table class="table table-striped table-bordered">
+//                    <thead class="table-dark">
+//                        <tr>
+//                            <th>ID</th>
+//                            <th>Nombre</th>
+//                            <th>Edad</th>
+//                            <th>Ciudad</th>
+//                        </tr>
+//                    </thead>
+//                    <tbody>
+//            `;
+
+//    //Mientras la fecha sea menor o igual a la fecha final se hace el proceso
+//    while (periodoInicio <= periodoFin) {
+//        // Mientras la fecha este fuera del periodo vacacional
+//        if (periodoInicio < periodoVacacionesInicio|| periodoInicio > periodoVacacionesFin) {
+//            // y mientras la fecha no sea igual a los dias feriados
+//            if (periodoInicio !== diaFeriado1 && periodoInicio !== diaFeriado2 && periodoInicio !== diaFeriado3 && periodoInicio !== diaFeriado4 && periodoInicio !== diaFeriado5) {
+//                //Vas a obtener el dia de la semana con letra
+//                diaSemana = obtenerDiaDeLaSemana(fechaInicio);
+//
+//                //Si el dia de la semana es lunes
+//                if (diaSemana.equals("Lunes")) {
+//                    //Y mientas el contador sea menor o igual al numero de horas de ese dia
+//                    while (cont <= horasLunes) {
+//                        //vas a hacer este proceso
+//
+//                        //Sumas 1 al contador
+//                        cont++;
+//                    }
+//                }
+//                if (diaSemana.equals("Martes")) {
+//
+//                }
+//                if (diaSemana.equals("Miércoles")) {
+//
+//                }
+//                if (diaSemana.equals("Jueves")) {
+//
+//                }
+//                if (diaSemana.equals("Viernes")) {
+//
+//                }
+//                if (diaSemana.equals("Sábado")) {
+//
+//                }
+//            }
+//        }
+//
+//        fechaInicio.setDate(fechaInicio.getDate() + 1);
+//    }
+}
+
+
+
+function parseDate(fechaString) {
+    // Divide la cadena en día, mes y año
+    const [dia, mes, año] = fechaString.split('/').map(Number); // Usa map(Number) para convertir a números
+
+    // Crea un objeto Date. En JavaScript, los meses empiezan desde 0 (Enero es 0, Diciembre es 11)
+    return new Date(año, mes - 1, dia);  // Restamos 1 al mes porque los meses son de 0 a 11
+}
+
+function obtenerDiaDeLaSemana(fecha) {
+    const dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+    return dias[fecha.getDay()];
+    const diaSemana = obtenerDiaDeLaSemana(fecha);
+}

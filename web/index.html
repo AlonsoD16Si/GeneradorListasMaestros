@@ -145,28 +145,29 @@
             <div class="registro">
                 <!-- Nueva sección de Días Festivos -->
                 <div class="container">
-                    <h5>Registrar Días Festivos</h5>
-                    <form action="/submit-dias-festivos" method="post" class="form-grid">
-                        <label for="dia-festivo-1">Días Festivos:</label>
-                        <input type="text" id="dia-festivo-1" name="dia-festivo-1" placeholder="Ej. 8 días" required>
-                        <input type="text" id="dia-festivo-2" name="dia-festivo-2" placeholder="Ej. 8 días" required>
-                        <input type="text" id="dia-festivo-3" name="dia-festivo-3" placeholder="Ej. 8 días" required>
-                    </form>
-                </div>
+    <h5>Registrar Días Festivos</h5>
+    <form action="/submit-dias-festivos" method="post" class="form-grid">
+        <label for="dia-festivo-1">Días Festivos:</label>
+        <input type="date" id="dia-festivo-1" name="dia-festivo-1" required>
+        <input type="date" id="dia-festivo-2" name="dia-festivo-1" required><!-- comment -->
+        <input type="date" id="dia-festivo-3" name="dia-festivo-1" required><!-- comment -->
+        <input type="date" id="dia-festivo-4" name="dia-festivo-1" required>
+        <input type="date" id="dia-festivo-5" name="dia-festivo-1" required>
+    </form>
+</div>
 
-                <!-- Nueva sección de Vacaciones -->
-                <div class="container">
-                    <h5>Registro de Fechas Vacacionales</h5>
-                    <form action="/submit-fecha-vacacional" method="post" class="form-grid">
-                        <label for="inicio-vacaciones-1">Fecha de Inicio de Vacaciones:</label>
-                        <input type="text" id="inicio-vacaciones-1" name="inicio-vacaciones-1"
-                            placeholder="Ej. 1/9/2024 - 11/9/2024" required>
-                        <input type="text" id="inicio-vacaciones-2" name="inicio-vacaciones-2"
-                            placeholder="Ej. 1/9/2024 - 11/9/2024" required>
-                        <input type="text" id="inicio-vacaciones-3" name="inicio-vacaciones-3"
-                            placeholder="Ej. 1/9/2024 - 11/9/2024" required>
-                    </form>
-                </div>
+<!-- Nueva sección de Vacaciones -->
+<div class="container">
+    <h5>Registro de Fechas Vacacionales</h5>
+    <form action="/submit-fecha-vacacional" method="post" class="form-grid">
+        <label for="inicio-vacaciones-1">Fecha de Inicio de Vacaciones:</label>
+        <input type="date" id="inicio-vacaciones-1" name="inicio-vacaciones-1" required>
+
+        <label for="fin-vacaciones-1">Fecha de Fin de Vacaciones:</label>
+        <input type="date" id="fin-vacaciones-1" name="fin-vacaciones-1" required>
+    </form>
+</div>
+
             </div>
 
 
@@ -174,7 +175,7 @@
     </div>
 
     <!-- Botón Guardar -->
-    <input type="submit" value="Guardar" class="btn btn-primary" style="margin-top: 10px;">
+    <input type="submit" value="Guardar" class="btn btn-primary" onclick="obtenerDatos()" style="margin-top: 10px;">
 
     <!-- Tabla de Resultados -->
     <table id="selectedDatesTable" border="1">
